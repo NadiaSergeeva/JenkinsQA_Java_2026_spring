@@ -24,7 +24,6 @@ public class FolderTest extends BaseTest {
     private static final String LIBRARY_NAME = "pipe library";
 
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Verify that folder is created")
     @Test
     public void testCreate() {
         List<String> joblist = new HomePage(getDriver())
