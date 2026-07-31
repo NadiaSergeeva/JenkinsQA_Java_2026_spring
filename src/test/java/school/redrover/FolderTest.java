@@ -1,9 +1,7 @@
 package school.redrover;
 
-import io.cucumber.java.be.I;
 import io.qameta.allure.*;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import school.redrover.common.BaseTest;
 import school.redrover.common.TestUtils;
