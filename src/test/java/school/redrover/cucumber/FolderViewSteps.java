@@ -36,7 +36,7 @@ public class FolderViewSteps {
     @And("Confirm configure for Folder ListView and go to View")
     public void confirmConfigureForFolderListViewAndGoToView() {
         FolderListViewConfigPage page = context.getCurrentPage();
-        context.setCurrentPage(page.clickSave());
+        context.setCurrentPage(page.clickSaveAndGetViewPage());
     }
 
     @And("Confirm configure for Folder GlobalView and go to View")

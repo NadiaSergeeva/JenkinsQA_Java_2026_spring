@@ -33,7 +33,7 @@ public class FolderViewTest extends BaseTest {
     public void testPreviewAddDescription() {
         String actualPreviewText = new HomePage(getDriver())
                 .clickOnProject(FOLDER_NAME, new FolderProjectPage(getDriver()))
-                .clickOnView()
+                .clickOnFolderMyView()
                 .addDescription(VIEW_DESCRIPTION)
                 .getTextPreview();
 
@@ -44,7 +44,7 @@ public class FolderViewTest extends BaseTest {
     public void testSaveViewDescription() {
         String actualDescriptionText = new HomePage(getDriver())
                 .clickOnProject(FOLDER_NAME, new FolderProjectPage(getDriver()))
-                .clickOnView()
+                .clickOnFolderMyView()
                 .addDescription(VIEW_DESCRIPTION)
                 .clickSubmitButton()
                 .getDescriptionText();
@@ -56,7 +56,7 @@ public class FolderViewTest extends BaseTest {
     public void testCancelDescription() {
         String actualDescriptionText = new HomePage(getDriver())
                 .clickOnProject(FOLDER_NAME, new FolderProjectPage(getDriver()))
-                .clickOnView()
+                .clickOnFolderMyView()
                 .editDescription(NEW_VIEW_DESCRIPTION)
                 .clickCancelButton()
                 .getDescriptionText();
@@ -68,9 +68,8 @@ public class FolderViewTest extends BaseTest {
 //    public void testOpenEditViewSettings() {
 //        String actualViewName = new HomePage(getDriver())
 //                .clickOnProject(FOLDER_NAME, new FolderProjectPage(getDriver()))
-//                .clickOnView()
-//                .getSideMenu()
-//                .clickEditView()
+//                .clickOnFolderMyView()
+//                .clickConfigure()
 //                .getViewName();
 //
 //        Assert.assertEquals(actualViewName, VIEW_NAME);

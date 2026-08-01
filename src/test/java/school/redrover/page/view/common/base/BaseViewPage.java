@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import school.redrover.page.common.BasePage;
 import school.redrover.page.view.config.BaseViewConfigPage;
 
-public abstract class BaseViewPage extends BasePage {
+public abstract class BaseViewPage<T extends BaseViewConfigPage<?, ?>> extends BasePage {
     public BaseViewPage(WebDriver driver) {
         super(driver);
     }
@@ -56,5 +56,5 @@ public abstract class BaseViewPage extends BasePage {
         getWait5().until(ExpectedConditions.visibilityOf(configureButton)).click();
     }
 
-    public abstract BaseViewConfigPage<?> clickConfigure();
+    public abstract T clickConfigure();
 }

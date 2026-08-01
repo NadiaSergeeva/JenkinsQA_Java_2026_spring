@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import school.redrover.page.view.common.base.FolderViewPage;
 import school.redrover.page.view.config.FolderListViewConfigPage;
 
-public class FolderListViewPage extends FolderViewPage {
+public class FolderListViewPage extends FolderViewPage<FolderListViewConfigPage> {
     public FolderListViewPage(WebDriver driver) {
         super(driver);
     }

@@ -71,6 +71,6 @@ public class GeneralViewSteps {
         if (context.getCurrentPage() == null)
             context.setCurrentPage(new HomePage(CucumberDriver.getDriver()));
         HomePage page = context.getCurrentPage();
-        context.setCurrentPage(page.clickOnGeneralView(new GeneralViewPage(CucumberDriver.getDriver()), viewName));
+        context.setCurrentPage(page.clickOnGeneralView(new GeneralListViewPage(CucumberDriver.getDriver()), viewName));
     }
 }

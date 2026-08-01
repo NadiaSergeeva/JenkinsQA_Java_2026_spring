@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import school.redrover.common.BaseTest;
 import school.redrover.common.TestUtils;
 import school.redrover.page.HomePage;
-import school.redrover.page.view.common.base.GeneralViewPage;
 
 public class GeneralViewTest extends BaseTest {
 
@@ -88,27 +87,27 @@ public class GeneralViewTest extends BaseTest {
 
     @Test
     public void testClickHidePreviewOption() {
-        GeneralViewPage generalViewPage = new HomePage(getDriver())
+        boolean isPreviewDisplayed = new HomePage(getDriver())
                 .clickDescription()
                 .inputDescription(DESCRIPTION_INPUT)
                 .clickPreviewButton()
-                .clickHideButton();
+                .clickHideButton()
+                .isPreviewDisplayed();
 
-        Assert.assertFalse(generalViewPage.isPreviewDisplayed());
+        Assert.assertFalse(isPreviewDisplayed);
     }
 
-//    @Test
-//    public void testUpdateViewName() {
-//        String nameView = TestUtils.createJob(getDriver(), PIPELINE_NAME, TestUtils.JobType.PIPELINE)
-//                .clickForNewView()
-//                .inputName(VIEW_NAME)
-//
-//                .selectMyViewAndClickCreate()
-//                .clickConfigure()
-//                .inputName(UPDATED_VIEW_NAME)
-//                .clickSave()
-//                .getCurrentViewName();
-//
-//        Assert.assertEquals(nameView, UPDATED_VIEW_NAME);
-//    }
+    @Test
+    public void testUpdateViewName() {
+        String nameView = TestUtils.createJob(getDriver(), PIPELINE_NAME, TestUtils.JobType.PIPELINE)
+                .clickForNewView()
+                .inputName(VIEW_NAME)
+                .selectMyViewAndClickCreate()
+                .clickConfigure()
+                .inputName(UPDATED_VIEW_NAME)
+                .clickSaveAndGetViewPage()
+                .getCurrentViewName();
+
+        Assert.assertEquals(nameView, UPDATED_VIEW_NAME);
+    }
 }

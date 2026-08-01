@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import school.redrover.page.view.common.folder.FolderGlobalViewPage;
 
-public class FolderGlobalViewConfigPage extends BaseViewConfigPage<FolderGlobalViewConfigPage> {
+public class FolderGlobalViewConfigPage extends BaseViewConfigPage<FolderGlobalViewConfigPage, FolderGlobalViewPage> {
 
     @FindBy(name = "proxiedViewName")
     private WebElement selectView;
@@ -14,13 +14,23 @@ public class FolderGlobalViewConfigPage extends BaseViewConfigPage<FolderGlobalV
         super(driver);
     }
 
+    @Override
+    protected FolderGlobalViewConfigPage self() {
+        return this;
+    }
+
+    @Override
+    protected FolderGlobalViewPage createViewPage() {
+        return new FolderGlobalViewPage(getDriver());
+    }
+
     public FolderGlobalViewConfigPage selectView(){
         selectView.click();
         return self();
     }
 
     public FolderGlobalViewPage clickSave() {
-        clickButtonSave();
+        clickSaveAndGetViewPage();
         return new FolderGlobalViewPage(getDriver());
     }
 }

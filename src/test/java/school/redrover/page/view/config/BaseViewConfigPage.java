@@ -5,8 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import school.redrover.page.common.BasePage;
+import school.redrover.page.view.common.base.BaseViewPage;
 
-public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T>> extends BasePage {
+public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T,V>, V extends BaseViewPage<T>> extends BasePage {
 
     @FindBy(name = "name")
     private WebElement elementName;
@@ -30,10 +31,7 @@ public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T>> extend
         super(driver);
     }
 
-    @SuppressWarnings("unchecked")
-    protected T self() {
-        return (T) this;
-    }
+    protected abstract T self();
 
     public T inputName(String newName) {
         getWait5().until(ExpectedConditions.elementToBeClickable(elementName)).clear();
@@ -59,8 +57,12 @@ public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T>> extend
         return self();
     }
 
-    protected void clickButtonSave() {
+    protected abstract V createViewPage();
+
+
+    public V clickSaveAndGetViewPage() {
         getWait5().until(ExpectedConditions.elementToBeClickable(buttonSave)).click();
+        return createViewPage();
     }
 
     protected void clickButtonApply() {

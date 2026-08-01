@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import school.redrover.page.view.common.base.GeneralViewPage;
 import school.redrover.page.view.config.GeneralListViewConfigPage;
 
-public class GeneralListViewPage extends GeneralViewPage {
+public class GeneralListViewPage extends GeneralViewPage<GeneralListViewConfigPage> {
     public GeneralListViewPage(WebDriver driver) {
         super(driver);
     }

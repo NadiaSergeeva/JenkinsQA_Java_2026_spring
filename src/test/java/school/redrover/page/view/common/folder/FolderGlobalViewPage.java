@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import school.redrover.page.view.common.base.FolderViewPage;
 import school.redrover.page.view.config.FolderGlobalViewConfigPage;
 
-public class FolderGlobalViewPage extends FolderViewPage {
+public class FolderGlobalViewPage extends FolderViewPage<FolderGlobalViewConfigPage> {
     public FolderGlobalViewPage(WebDriver driver) {
         super(driver);
     }
