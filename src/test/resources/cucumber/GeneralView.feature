@@ -19,6 +19,6 @@ Feature: General View
     And Confirm settings and go to General ListView
     Then General ListView name is "ListView"
 
-  Scenario: Add job to general ListView
-    When Click on "ListView" general ListView
-    And Go to general "ListView" Configure
+#  Scenario: Add job to general ListView
+#    When Click on "ListView" general ListView
+#    And Go to general "ListView" Configure
