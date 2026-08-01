@@ -1,9 +1,7 @@
 package school.redrover;
 
-import io.cucumber.java.be.I;
 import io.qameta.allure.*;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import school.redrover.common.BaseTest;
 import school.redrover.common.TestUtils;
@@ -24,7 +22,6 @@ public class FolderTest extends BaseTest {
     private static final String LIBRARY_NAME = "pipe library";
 
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Verify that folder is created")
     @Test
     public void testCreate() {
         List<String> joblist = new HomePage(getDriver())
