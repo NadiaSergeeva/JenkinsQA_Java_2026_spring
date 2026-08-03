@@ -10,8 +10,8 @@ import school.redrover.page.common.BasePage;
 import school.redrover.page.common.BaseProjectPage;
 import school.redrover.page.components.BaseSideMenuComponent;
 import school.redrover.page.project.config.FolderConfigPage;
+import school.redrover.page.view.common.folder.FolderMyViewPage;
 import school.redrover.page.view.create.CreateFolderViewPage;
-import school.redrover.page.view.FolderViewPage;
 
 import java.util.regex.Pattern;
 
@@ -109,10 +109,10 @@ public class FolderProjectPage extends BaseProjectPage<FolderProjectPage> {
         return viewName.getText();
     }
 
-    public FolderViewPage clickOnView () {
-        viewName.click();
-        return new FolderViewPage(getDriver());
 
+    public FolderMyViewPage clickOnFolderMyView() {
+        viewName.click();
+        return new FolderMyViewPage(getDriver());
     }
 
     public <ProjectPage extends BasePage> ProjectPage clickOnChildProject(String projectName, ProjectPage projectPage) {

@@ -1,12 +1,13 @@
-package school.redrover.page.view.base;
+package school.redrover.page.view.config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import school.redrover.page.common.BasePage;
+import school.redrover.page.view.common.base.BaseViewPage;
 
-public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T>> extends BasePage {
+public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T,V>, V extends BaseViewPage<T>> extends BasePage {
 
     @FindBy(name = "name")
     private WebElement elementName;
@@ -30,25 +31,41 @@ public abstract class BaseViewConfigPage<T extends BaseViewConfigPage<T>> extend
         super(driver);
     }
 
-    @SuppressWarnings("unchecked")
+    protected abstract T self();
+
     public T inputName(String newName) {
         getWait5().until(ExpectedConditions.elementToBeClickable(elementName)).clear();
         elementName.sendKeys(newName);
 
-        return (T) this;
+        return self();
     }
 
-    public String getViewName() {
-        return getWait5()
-                .until(ExpectedConditions.visibilityOf(elementName))
-                .getAttribute("value");
-    }
-
-    @SuppressWarnings("unchecked")
     public T inputDescription(String newDescription) {
         elementDescription.clear();
         elementDescription.sendKeys(newDescription);
 
-        return (T) this;
+        return self();
+    }
+
+    public T clickFilterQueue() {
+        chekboxQueue.click();
+        return self();
+    }
+
+    public T clickFilterExecutions() {
+        chekboxExecutions.click();
+        return self();
+    }
+
+    protected abstract V createViewPage();
+
+
+    public V clickSaveAndGetViewPage() {
+        getWait5().until(ExpectedConditions.elementToBeClickable(buttonSave)).click();
+        return createViewPage();
+    }
+
+    protected void clickButtonApply() {
+        getWait5().until(ExpectedConditions.elementToBeClickable(buttonApply)).click();
     }
 }

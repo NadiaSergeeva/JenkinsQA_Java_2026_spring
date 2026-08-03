@@ -1,22 +1,23 @@
-package school.redrover.page.view;
+package school.redrover.page.view.common.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import school.redrover.page.components.ViewSideMenuComponent;
-import school.redrover.page.view.base.BaseViewPage;
+import school.redrover.page.view.config.BaseViewConfigPage;
 
-public class FolderViewPage extends BaseViewPage {
+public abstract class FolderViewPage<T extends BaseViewConfigPage<?,?>> extends BaseViewPage<T>{
 
     public FolderViewPage(WebDriver driver) {
         super(driver);
     }
 
-    public ViewSideMenuComponent<FolderViewPage> getSideMenu() {
+
+    public ViewSideMenuComponent<FolderViewPage<T>> getSideMenu() {
         return new ViewSideMenuComponent<>(getDriver(), this);
     }
 
-    public FolderViewPage addDescription(String expectedDescription) {
+    public FolderViewPage<T> addDescription(String expectedDescription) {
         editDescription.click();
         getWait5().until(ExpectedConditions.visibilityOf(fieldDescription)).sendKeys(expectedDescription);
 
@@ -28,7 +29,7 @@ public class FolderViewPage extends BaseViewPage {
         return getWait10().until(ExpectedConditions.visibilityOf(areaPreview)).getText();
     }
 
-    public FolderViewPage clickSubmitButton() {
+    public FolderViewPage<T> clickSubmitButton() {
         buttonSave.click();
         return this;
     }
@@ -37,7 +38,7 @@ public class FolderViewPage extends BaseViewPage {
         return getWait10().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(descriptionMessage))).getText();
     }
 
-    public FolderViewPage editDescription(String newDescriptionText) {
+    public FolderViewPage<T> editDescription(String newDescriptionText) {
         editDescription.click();
 
         WebElement descriptionField = getWait5().until(ExpectedConditions.visibilityOf(fieldDescription));
@@ -47,7 +48,7 @@ public class FolderViewPage extends BaseViewPage {
         return this;
     }
 
-    public FolderViewPage clickCancelButton() {
+    public FolderViewPage<T> clickCancelButton() {
         buttonCancel.click();
         return this;
     }

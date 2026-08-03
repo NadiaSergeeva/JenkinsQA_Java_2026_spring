@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import school.redrover.common.BaseTest;
 import school.redrover.common.TestUtils;
 import school.redrover.page.HomePage;
-import school.redrover.page.view.GeneralViewPage;
 
 public class GeneralViewTest extends BaseTest {
 
@@ -88,13 +87,14 @@ public class GeneralViewTest extends BaseTest {
 
     @Test
     public void testClickHidePreviewOption() {
-        GeneralViewPage generalViewPage = new HomePage(getDriver())
+        boolean isPreviewDisplayed = new HomePage(getDriver())
                 .clickDescription()
                 .inputDescription(DESCRIPTION_INPUT)
                 .clickPreviewButton()
-                .clickHideButton();
+                .clickHideButton()
+                .isPreviewDisplayed();
 
-        Assert.assertFalse(generalViewPage.isPreviewDisplayed());
+        Assert.assertFalse(isPreviewDisplayed);
     }
 
     @Test
@@ -103,9 +103,9 @@ public class GeneralViewTest extends BaseTest {
                 .clickForNewView()
                 .inputName(VIEW_NAME)
                 .selectMyViewAndClickCreate()
-                .clickEditView()
+                .clickConfigure()
                 .inputName(UPDATED_VIEW_NAME)
-                .clickSave()
+                .clickSaveAndGetViewPage()
                 .getCurrentViewName();
 
         Assert.assertEquals(nameView, UPDATED_VIEW_NAME);

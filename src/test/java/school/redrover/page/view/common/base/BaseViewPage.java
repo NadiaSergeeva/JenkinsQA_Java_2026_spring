@@ -1,12 +1,13 @@
-package school.redrover.page.view.base;
+package school.redrover.page.view.common.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import school.redrover.page.common.BasePage;
+import school.redrover.page.view.config.BaseViewConfigPage;
 
-public abstract class BaseViewPage extends BasePage {
+public abstract class BaseViewPage<T extends BaseViewConfigPage<?, ?>> extends BasePage {
     public BaseViewPage(WebDriver driver) {
         super(driver);
     }
@@ -44,7 +45,16 @@ public abstract class BaseViewPage extends BasePage {
     @FindBy(className = "textarea-hide-preview")
     protected WebElement hidePreview;
 
+    @FindBy(xpath = "//div[@id='side-panel']//a[contains(@href, '/configure')]")
+    private WebElement configureButton;
+
     public String getCurrentViewName() {
         return getWait5().until(ExpectedConditions.visibilityOf(currentViewName)).getText();
     }
+
+    public void clickConfigureButton() {
+        getWait5().until(ExpectedConditions.visibilityOf(configureButton)).click();
+    }
+
+    public abstract T clickConfigure();
 }
